@@ -13,12 +13,9 @@ emissionsAndYearsBaltimore <- NEI[!is.na(NEI$year) & NEI$fips == '24510', c("Emi
 emissionsAndYearsBaltimore[,c("Emissions")] <- as.numeric(emissionsAndYearsBaltimore[,c("Emissions")])
 emissionsAndYearsBaltimore[,c("year")] <- as.numeric(emissionsAndYearsBaltimore[,c("year")])
 
-year <- factor(emissionsAndYearsBaltimore$year)
-type <- factor(emissionsAndYearsBaltimore$type)
-
 aggregated <- ddply(emissionsAndYearsBaltimore, .(year, type), summarise, sum = sum(Emissions))
 
 png(filename = 'plot3.png')
-p <- qplot(aggregated$year, aggregated$sum, xlab = "Year", ylab = "PM2.5 Emissions (Tons)", main = "Baltimore City", colour = aggregated$type, geom = c("line", "point")) + scale_color_brewer(palette = "Set1", name = "Type")
+p <- qplot(aggregated$year, aggregated$sum, xlab = "Year", ylab = "PM2.5 Emissions (Tons)", main = "Baltimore City Emissions", colour = aggregated$type, geom = c("line", "point")) + scale_color_brewer(palette = "Set1", name = "Type")
 print(p)
 dev.off()

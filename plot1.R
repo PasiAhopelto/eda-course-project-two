@@ -15,5 +15,5 @@ sumsByYear <- aggregate(x = emissionsAndYears, by = list(year), FUN = sum)
 sumsByYear[,c("Group.1")] <- as.numeric(levels(sumsByYear$Group.1))
 
 png(filename = 'plot1.png')
-plot(x = sumsByYear$Group.1, y = sumsByYear$Emissions, type = "b", ylab = 'PM2.5 Emissions (Tons)', xlab = 'Year', main = "United States")
+plot(x = sumsByYear$Group.1, y = sumsByYear$Emissions, type = "b", ylab = 'PM2.5 Emissions (Tons)', xlab = 'Year', main = "United States Total Emissions")
 dev.off()

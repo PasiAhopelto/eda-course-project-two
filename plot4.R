@@ -20,6 +20,6 @@ coalBased <- merged[grepl(".*Coal.*", merged$Short.Name),]
 aggregated <- ddply(coalBased, .(year), summarise, sum = sum(Emissions))
 
 png(filename = 'plot4.png')
-p <- qplot(aggregated$year, aggregated$sum, xlab = "Year", ylab = "PM2.5 Emissions (Tons)", main = "United States", colour = aggregated$type, geom = c("line", "point"))
+p <- qplot(aggregated$year, aggregated$sum, xlab = "Year", ylab = "PM2.5 Emissions (Tons)", main = "United States Coal Based Emissions", colour = aggregated$type, geom = c("line", "point"))
 print(p)
-dev.off()
+dev.off() 
