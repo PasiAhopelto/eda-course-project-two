@@ -16,7 +16,7 @@ emissionsAndYearsBaltimore[,c("year")] <- as.numeric(emissionsAndYearsBaltimore[
 year <- factor(emissionsAndYearsBaltimore$year)
 type <- factor(emissionsAndYearsBaltimore$type)
 
-aggregated <- ddply(emissionsAndYearsBaltimore, .(year, type), summarise, sum = sum(year))
+aggregated <- ddply(emissionsAndYearsBaltimore, .(year, type), summarise, sum = sum(Emissions))
 
 png(filename = 'plot3.png')
 p <- qplot(aggregated$year, aggregated$sum, xlab = "Year", ylab = "PM2.5 Emissions (Tons)", main = "Baltimore City", colour = aggregated$type, geom = c("line", "point")) + scale_color_brewer(palette = "Set1", name = "Type")
